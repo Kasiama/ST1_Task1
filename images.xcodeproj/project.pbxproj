@@ -15,6 +15,7 @@
 		5ECE08A422A266CD00E24005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE08A322A266CD00E24005 /* main.m */; };
 		5ECE08B222A287A900E24005 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE08B022A287A900E24005 /* ViewController2.m */; };
 		5ECE08B322A287A900E24005 /* ViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ECE08B122A287A900E24005 /* ViewController2.xib */; };
+		5ECE08B622A3E0A300E24005 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE08B522A3E0A300E24005 /* CustomView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		5ECE08AF22A287A900E24005 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		5ECE08B022A287A900E24005 /* ViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 		5ECE08B122A287A900E24005 /* ViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController2.xib; sourceTree = "<group>"; };
+		5ECE08B422A3E0A300E24005 /* CustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
+		5ECE08B522A3E0A300E24005 /* CustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				5ECE08AF22A287A900E24005 /* ViewController2.h */,
 				5ECE08B022A287A900E24005 /* ViewController2.m */,
 				5ECE08B122A287A900E24005 /* ViewController2.xib */,
+				5ECE08B422A3E0A300E24005 /* CustomView.h */,
+				5ECE08B522A3E0A300E24005 /* CustomView.m */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECE08B622A3E0A300E24005 /* CustomView.m in Sources */,
 				5ECE089922A266C800E24005 /* ViewController.m in Sources */,
 				5ECE08B222A287A900E24005 /* ViewController2.m in Sources */,
 				5ECE08A422A266CD00E24005 /* main.m in Sources */,

@@ -13,6 +13,7 @@
 
 @interface ViewController ()
 @property (strong) ViewController2 *secondViewController;
+@property (strong) NSMutableArray *draggingImages;
 
 @end
 
@@ -38,6 +39,8 @@
     
     [self.navigationController pushViewController: secondView animated:YES];
 }
+
+
 
 
 @end

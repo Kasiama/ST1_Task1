@@ -7,11 +7,14 @@
 //
 
 #import "ViewController2.h"
+#import "ViewController.h"
+#import "CustomView.h"
 
 @interface ViewController2 ()
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @end
+
+
 
 @implementation ViewController2
 
@@ -32,15 +35,19 @@
                          [UIImage imageNamed:@"image5"],
                          [UIImage imageNamed:@"image6"],
                         nil];
+    //CustomView *cv = [[CustomView alloc] ]
     
     for(int i =0;i<example.count;i++){
         
-        UIImageView *iv = [[UIImageView alloc] initWithImage:[example objectAtIndex:i]];
+      //  UIImageView *iv = [[UIImageView alloc] initWithImage:[example objectAtIndex:i]];
     
-        iv.frame = CGRectMake(20, 130*i, iv.frame.size.width, iv.frame.size.height);
+        //iv.frame = CGRectMake(20, 130*i, iv.frame.size.width, iv.frame.size.height);
        
-        [_scrollView addSubview:iv];
+       // [_scrollView addSubview:iv];
         
+        CustomView *cv = [[CustomView alloc] initWithFrame:CGRectMake(20, 200*i, 300, 200) withImage:[example objectAtIndex:i] withLabel:@"fffffff"];
+        
+         [_scrollView addSubview:cv];
        // _scrollView.delegate= self;
     }
     _scrollView.contentSize =CGSizeMake(self.view.frame.size.width,130*6 );
@@ -49,5 +56,9 @@
 -(void)back:(id)sender {
    [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
+
 
 @end
