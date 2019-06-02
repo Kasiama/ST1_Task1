@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import"VC2Delegate.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface ViewController2 : UIViewController
-
+@property (nonatomic, weak) id<VC2Delegate> delegate;
 @end
 
-NS_ASSUME_NONNULL_END
+

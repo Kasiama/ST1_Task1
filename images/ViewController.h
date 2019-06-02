@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VC2Delegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<VC2Delegate>
 
 
 @end

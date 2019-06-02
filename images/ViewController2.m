@@ -46,7 +46,7 @@
        // [_scrollView addSubview:iv];
         
         CustomView *cv = [[CustomView alloc] initWithFrame:CGRectMake(20, 200*i, 300, 200) withImage:[example objectAtIndex:i] withLabel:@"fffffff"];
-        
+        [self addCustomViewGestureRecognizer:cv];
          [_scrollView addSubview:cv];
        // _scrollView.delegate= self;
     }
@@ -56,9 +56,17 @@
 -(void)back:(id)sender {
    [self.navigationController popViewControllerAnimated:YES];
 }
-
-
-
+- (void)addCustomViewGestureRecognizer:(CustomView *)cv {
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleSingleTap:)];
+    [cv addGestureRecognizer:singleFingerTap];
+}
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    [_delegate moveDataTo1VC:(CustomView *)recognizer.view];
+    
+}
 
 
 @end

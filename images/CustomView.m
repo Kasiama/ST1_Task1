@@ -19,9 +19,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        //UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, img.size.width, img.size.height)];
-      //  [v setBackgroundColor:[UIColor colorWithPatternImage:img]];
-      //  [self addSubview:v];
         _originalImage = img;
         _title = lbl;
         [self drawRect:frame];

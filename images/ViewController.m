@@ -19,6 +19,14 @@
 
 @implementation ViewController
 
+- (void)moveDataTo1VC:(CustomView*)data {
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.view addSubview:data];
+    //[self setCustomViewConstraints:data];
+    [self setTitle:data.title];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"title";
@@ -36,7 +44,7 @@
     
         ViewController2 *secondView=[[ViewController2 alloc] init];
         self.secondViewController=secondView;
-    
+        secondView.delegate = self;
     [self.navigationController pushViewController: secondView animated:YES];
 }
 
