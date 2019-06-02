@@ -13,6 +13,8 @@
 		5ECE089E22A266CD00E24005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ECE089D22A266CD00E24005 /* Assets.xcassets */; };
 		5ECE08A122A266CD00E24005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ECE089F22A266CD00E24005 /* LaunchScreen.storyboard */; };
 		5ECE08A422A266CD00E24005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE08A322A266CD00E24005 /* main.m */; };
+		5ECE08B222A287A900E24005 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE08B022A287A900E24005 /* ViewController2.m */; };
+		5ECE08B322A287A900E24005 /* ViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ECE08B122A287A900E24005 /* ViewController2.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		5ECE08A022A266CD00E24005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5ECE08A222A266CD00E24005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ECE08A322A266CD00E24005 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5ECE08AF22A287A900E24005 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
+		5ECE08B022A287A900E24005 /* ViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+		5ECE08B122A287A900E24005 /* ViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController2.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +72,9 @@
 				5ECE089F22A266CD00E24005 /* LaunchScreen.storyboard */,
 				5ECE08A222A266CD00E24005 /* Info.plist */,
 				5ECE08A322A266CD00E24005 /* main.m */,
+				5ECE08AF22A287A900E24005 /* ViewController2.h */,
+				5ECE08B022A287A900E24005 /* ViewController2.m */,
+				5ECE08B122A287A900E24005 /* ViewController2.xib */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ECE08A122A266CD00E24005 /* LaunchScreen.storyboard in Resources */,
+				5ECE08B322A287A900E24005 /* ViewController2.xib in Resources */,
 				5ECE089E22A266CD00E24005 /* Assets.xcassets in Resources */,
 				5ECE089C22A266C800E24005 /* Main.storyboard in Resources */,
 			);
@@ -142,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ECE089922A266C800E24005 /* ViewController.m in Sources */,
+				5ECE08B222A287A900E24005 /* ViewController2.m in Sources */,
 				5ECE08A422A266CD00E24005 /* main.m in Sources */,
 				5ECE089622A266C800E24005 /* AppDelegate.m in Sources */,
 			);
