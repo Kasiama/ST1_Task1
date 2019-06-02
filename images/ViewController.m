@@ -21,9 +21,36 @@
 
 - (void)moveDataTo1VC:(CustomView*)data {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    UIPanGestureRecognizer *pan =
+    [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handlePan:)];
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleTap:)];
+    [data addGestureRecognizer:pan];
+    [data addGestureRecognizer:tap];
+    
     [self.view addSubview:data];
     //[self setCustomViewConstraints:data];
     [self setTitle:data.title];
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)recognizer {
+    CustomView *draggingView = (CustomView *)recognizer.view;
+    self.title = draggingView.title;
+    [self.view bringSubviewToFront:draggingView];
+    CGPoint translatedPoint = [recognizer translationInView:draggingView.superview];
+    CGPoint location = [recognizer locationInView:draggingView.superview];
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        draggingView.center = location;
+    }
+    draggingView.center = CGPointMake(draggingView.center.x + translatedPoint.x, draggingView.center.y +translatedPoint.y);
+    [recognizer setTranslation:CGPointZero inView:draggingView.superview];
+}
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+    CustomView *draggingView = (CustomView *)recognizer.view;
+    self.title = draggingView.title;
 }
 
 
