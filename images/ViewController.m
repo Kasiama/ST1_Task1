@@ -19,8 +19,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [self.originalImage drawInRect:CGRectMake(0.f, 0.f, 150, 100)];
-
+    [self.originalImage drawInRect:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
 }
 
 
@@ -38,9 +37,9 @@
 
 - (void)moveDataTo1VC:(CustomView*)data {
     [self.navigationController popViewControllerAnimated:YES];
-    
+    CGSize sizeImg = CGSizeMake(160, 120);
 
-    CustomViewWithoutLabel *cmwl = [[CustomViewWithoutLabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2,150,100)];
+    CustomViewWithoutLabel *cmwl = [[CustomViewWithoutLabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-sizeImg.width)/2, (self.view.frame.size.height-sizeImg.height)/2,sizeImg.width,sizeImg.height)];
     
     cmwl.originalImage = data.originalImage;
     cmwl.title = data.title;
