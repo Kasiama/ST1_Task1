@@ -9,11 +9,27 @@
 #import "ViewController.h"
 #import "ViewController2.h"
 
+@interface CustomViewWithoutLabel : UIView
+@property (nonatomic, strong) UIImage *originalImage;
+@property(nonatomic,strong)NSString *title;
+@end
 
+
+@implementation CustomViewWithoutLabel
+
+- (void)drawRect:(CGRect)rect
+{
+    [self.originalImage drawInRect:CGRectMake(0.f, 0.f, self.originalImage.size.width, self.originalImage.size.height)];
+
+}
+
+@end
 
 @interface ViewController ()
 @property (strong) ViewController2 *secondViewController;
 @property (strong) NSMutableArray *draggingImages;
+@property(strong) CustomViewWithoutLabel *cust;
+@property(assign) CGPoint touchOfSet;
 
 @end
 
@@ -28,29 +44,74 @@
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleTap:)];
-    [data addGestureRecognizer:pan];
-    [data addGestureRecognizer:tap];
+    CustomViewWithoutLabel *cmwl = [[CustomViewWithoutLabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2,data.originalImage.size.width,data.originalImage.size.height)];
     
-    [self.view addSubview:data];
+    cmwl.originalImage = data.originalImage;
+    cmwl.title = data.title;
+   // [cmwl addGestureRecognizer:pan];
+   // [cmwl addGestureRecognizer:tap];
+    
+    [self.view addSubview:cmwl];
     //[self setCustomViewConstraints:data];
     [self setTitle:data.title];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
-    CustomView *draggingView = (CustomView *)recognizer.view;
-    self.title = draggingView.title;
-    [self.view bringSubviewToFront:draggingView];
-    CGPoint translatedPoint = [recognizer translationInView:draggingView.superview];
-    CGPoint location = [recognizer locationInView:draggingView.superview];
+    CustomViewWithoutLabel *cmwl = (CustomViewWithoutLabel *)recognizer.view;
+    self.title = cmwl.title;
+    [self.view bringSubviewToFront:cmwl];
+    CGPoint translatedPoint = [recognizer translationInView:cmwl.superview];
+    CGPoint location = [recognizer locationInView:cmwl.superview];
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        draggingView.center = location;
+        cmwl.center = location;
     }
-    draggingView.center = CGPointMake(draggingView.center.x + translatedPoint.x, draggingView.center.y +translatedPoint.y);
-    [recognizer setTranslation:CGPointZero inView:draggingView.superview];
+    cmwl.center = CGPointMake(cmwl.center.x + translatedPoint.x, cmwl.center.y +translatedPoint.y);
+    [recognizer setTranslation:CGPointZero inView:cmwl.superview];
 }
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
-    CustomView *draggingView = (CustomView *)recognizer.view;
+    CustomViewWithoutLabel *draggingView = (CustomViewWithoutLabel *)recognizer.view;
     self.title = draggingView.title;
+}
+
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    UITouch *touch =[touches anyObject];
+    CGPoint poi = [touch locationInView:self.view];
+    CustomViewWithoutLabel *view = [self.view hitTest:poi withEvent:event];
+    if(![view isEqual:self.view]){
+        self.cust = view;
+        self.title = _cust.title;
+        [self.view bringSubviewToFront:self.cust];
+        CGPoint touchPoint = [touch locationInView:self.cust];
+        self.touchOfSet= CGPointMake(CGRectGetMidX(self.cust.bounds)-touchPoint.x, CGRectGetMidY(self.cust.bounds)-touchPoint.y);
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.cust.transform=CGAffineTransformMakeScale(1.05f, 1.05f);
+                             self.cust.alpha= 0.7f;
+                         }];
+    }
+    else{
+        self.title =@"title";
+        self.cust = nil;
+    }
+    
+}
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if(self.cust){
+        UITouch *touch = [touches anyObject];
+        CGPoint pointOnMainView = [touch locationInView:self.view];
+        CGPoint correction = CGPointMake(pointOnMainView.x+self.touchOfSet.x, pointOnMainView.y+self.touchOfSet.y);
+        self.cust.center=correction;
+    }
+}
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+  
+    [UIView animateWithDuration:0.3 animations:^{
+        self.cust.transform=CGAffineTransformIdentity;
+         self.cust.alpha= 1.f;
+    }];
+      self.cust = nil;
 }
 
 

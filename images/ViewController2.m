@@ -34,7 +34,22 @@
                          [UIImage imageNamed:@"image4"],
                          [UIImage imageNamed:@"image5"],
                          [UIImage imageNamed:@"image6"],
+                         [UIImage imageNamed:@"image7"],
+                        
                         nil];
+    NSArray *example1 = [[NSArray alloc] initWithObjects:
+                        @"image1",
+                         @"image2",
+                         @"image3",
+                         @"image4",
+                         @"image5",
+                         @"image6",
+                         @"image7",
+                        
+                        
+                        nil];
+    
+    
     //CustomView *cv = [[CustomView alloc] ]
     
     for(int i =0;i<example.count;i++){
@@ -45,12 +60,12 @@
        
        // [_scrollView addSubview:iv];
         
-        CustomView *cv = [[CustomView alloc] initWithFrame:CGRectMake(20, 200*i, 300, 200) withImage:[example objectAtIndex:i] withLabel:@"fffffff"];
+        CustomView *cv = [[CustomView alloc] initWithFrame:CGRectMake(20, 200*i, 300, 200) withImage:[example objectAtIndex:i] withLabel:[example1 objectAtIndex:i]];
         [self addCustomViewGestureRecognizer:cv];
          [_scrollView addSubview:cv];
        // _scrollView.delegate= self;
     }
-    _scrollView.contentSize =CGSizeMake(self.view.frame.size.width,130*6 );
+    _scrollView.contentSize =CGSizeMake(self.view.frame.size.width,200*7 );
     
 }
 -(void)back:(id)sender {
