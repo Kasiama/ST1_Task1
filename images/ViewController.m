@@ -26,7 +26,6 @@
 @end
 
 @interface ViewController ()
-@property (strong) NSMutableArray *draggingImages;
 @property(strong) CustomViewWithoutLabel *cust;
 @property(assign) CGPoint touchOfSet;
 
@@ -39,22 +38,22 @@
     [self.navigationController popViewControllerAnimated:YES];
     CGSize sizeImg = CGSizeMake(160, 120);
 
-    CustomViewWithoutLabel *cmwl = [[CustomViewWithoutLabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-sizeImg.width)/2, (self.view.frame.size.height-sizeImg.height)/2,sizeImg.width,sizeImg.height)];
+    CustomViewWithoutLabel *customViewWithoutLabel = [[CustomViewWithoutLabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-sizeImg.width)/2, (self.view.frame.size.height-sizeImg.height)/2,sizeImg.width,sizeImg.height)];
     
-    cmwl.originalImage = data.originalImage;
-    cmwl.title = data.title;
+    customViewWithoutLabel.originalImage = data.originalImage;
+    customViewWithoutLabel.title = data.title;
     
-    [self.view addSubview:cmwl];
+    [self.view addSubview:customViewWithoutLabel];
     [self setTitle:data.title];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     UITouch *touch =[touches anyObject];
-    CGPoint poi = [touch locationInView:self.view];
-    CustomViewWithoutLabel *view = [self.view hitTest:poi withEvent:event];
-    if(![view isEqual:self.view]){
-        self.cust = view;
+    CGPoint pointOfTouch = [touch locationInView:self.view];
+    CustomViewWithoutLabel *customViewWithoutLabel = [self.view hitTest:pointOfTouch withEvent:event];
+    if(![customViewWithoutLabel isEqual:self.view]){
+        self.cust = customViewWithoutLabel;
         self.title = _cust.title;
         [self.view bringSubviewToFront:self.cust];
         CGPoint touchPoint = [touch locationInView:self.cust];

@@ -24,20 +24,20 @@
         [self drawRect:frame];
         [self setBackgroundColor:[UIColor whiteColor]];
         
-        UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectZero];
-       label1.textColor = [UIColor blackColor];
-        label1.tag = 14;
-        label1.translatesAutoresizingMaskIntoConstraints = NO;
-        label1.adjustsFontSizeToFitWidth = YES;
-        label1.text = lbl;
-        label1.numberOfLines = 0;
-        [self addSubview:label1];
+        UILabel * descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+       descriptionLabel.textColor = [UIColor blackColor];
+        descriptionLabel.tag = 14;
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        descriptionLabel.adjustsFontSizeToFitWidth = YES;
+        descriptionLabel.text = lbl;
+        descriptionLabel.numberOfLines = 0;
+        [self addSubview:descriptionLabel];
         
         [NSLayoutConstraint activateConstraints:@[
-        [label1.leadingAnchor constraintEqualToAnchor:self.leadingAnchor],
-        [label1.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
-        [label1.topAnchor constraintEqualToAnchor:self.bottomAnchor],
-        [label1.heightAnchor constraintEqualToConstant:40]
+        [descriptionLabel.leadingAnchor constraintEqualToAnchor:self.leadingAnchor],
+        [descriptionLabel.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
+        [descriptionLabel.topAnchor constraintEqualToAnchor:self.bottomAnchor],
+        [descriptionLabel.heightAnchor constraintEqualToConstant:40]
         ]];
         
     }
