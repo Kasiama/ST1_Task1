@@ -12,6 +12,7 @@
 
 @interface ViewController2 ()
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic)  CustomView *cv;
 @end
 
 
@@ -50,22 +51,48 @@
                         nil];
     
     
-    //CustomView *cv = [[CustomView alloc] ]
+    
+    UIView *previousView = nil;
+    //scrollView.contentSize =CGSizeMake(self.view.frame.size.width,200*7 );
+    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.scrollView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
+                                              [self.scrollView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
+                                              [self.scrollView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+                                              [self.scrollView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor]
+                                              ]
+     ];
+
+    
     
     for(int i =0;i<example.count;i++){
-        
-      //  UIImageView *iv = [[UIImageView alloc] initWithImage:[example objectAtIndex:i]];
-    
-        //iv.frame = CGRectMake(20, 130*i, iv.frame.size.width, iv.frame.size.height);
-       
-       // [_scrollView addSubview:iv];
-        
-        CustomView *cv = [[CustomView alloc] initWithFrame:CGRectMake(20, 200*i, 300, 200) withImage:[example objectAtIndex:i] withLabel:[example1 objectAtIndex:i]];
+        CustomView *cv = [[CustomView alloc] initWithFrame:CGRectZero withImage:[example objectAtIndex:i] withLabel:[example1 objectAtIndex:i]];
+    cv.backgroundColor = [UIColor greenColor];
+    cv.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.scrollView addSubview:cv];
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:cv attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
         [self addCustomViewGestureRecognizer:cv];
-         [_scrollView addSubview:cv];
-       // _scrollView.delegate= self;
+        
+        if (previousView == nil) {
+            [NSLayoutConstraint activateConstraints:@[
+                                                    //  [cv.leadingAnchor constraintEqualToAnchor:self.scrollView.leadingAnchor],
+                                                      [cv.topAnchor constraintEqualToAnchor:self.scrollView.topAnchor],
+                                                      [cv.heightAnchor constraintEqualToConstant:cv.originalImage.size.height],
+                                                      [cv.widthAnchor constraintEqualToConstant:cv.originalImage.size.width]
+                                                      ]];
+        } else {
+            [NSLayoutConstraint activateConstraints:@[
+                                                    //  [cv.leadingAnchor constraintEqualToAnchor:self.scrollView.leadingAnchor],
+                                                      [cv.topAnchor constraintEqualToAnchor:previousView.bottomAnchor constant:20],
+                                                      [cv.heightAnchor constraintEqualToConstant:cv.originalImage.size.height],
+                                                      [cv.widthAnchor constraintEqualToConstant:cv.originalImage.size.width]
+                                                      ]];
+        }
+        
+    previousView = cv;
     }
-    _scrollView.contentSize =CGSizeMake(self.view.frame.size.width,200*7 );
+    
+    
     
 }
 -(void)back:(id)sender {
