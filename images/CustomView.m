@@ -19,7 +19,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code CGRectMake(0, frame.size.height - 50, frame.size.width,30)
         _originalImage = img;
         _title = lbl;
         [self drawRect:frame];
@@ -34,7 +33,6 @@
         [label1.leadingAnchor constraintEqualToAnchor:self.leadingAnchor],
         [label1.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
         [label1.topAnchor constraintEqualToAnchor:self.bottomAnchor],
-        //[self.cv.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
         [label1.heightAnchor constraintEqualToConstant:20]
         ]];
         

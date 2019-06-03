@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "ViewController2.h"
 @interface AppDelegate ()
 
 @end
@@ -20,8 +19,6 @@
     self.window  =[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds] ];
     self.window.backgroundColor = [UIColor whiteColor];
     ViewController *vc1 = [[ViewController alloc] init];
-    ViewController2 *vc2 = [[ViewController2 alloc] init];
-    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc1];
     
     [self.window setRootViewController:nav];

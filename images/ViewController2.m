@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"second View";
+    self.title = @"Select Item";
     self.navigationController.toolbarHidden = YES;
     [self.navigationItem setHidesBackButton:YES animated:YES];
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
@@ -53,7 +53,7 @@
     
     
     UIView *previousView = nil;
-    //scrollView.contentSize =CGSizeMake(self.view.frame.size.width,200*7 );
+    //_scrollView.contentSize =CGSizeMake(self.view.frame.size.width,200*7 );
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[
                                               [self.scrollView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
@@ -62,9 +62,7 @@
                                               [self.scrollView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor]
                                               ]
      ];
-
-    
-    
+    float topAnchor = 0;
     for(int i =0;i<example.count;i++){
         CustomView *cv = [[CustomView alloc] initWithFrame:CGRectZero withImage:[example objectAtIndex:i] withLabel:[example1 objectAtIndex:i]];
     cv.backgroundColor = [UIColor greenColor];
@@ -80,6 +78,7 @@
                                                       [cv.heightAnchor constraintEqualToConstant:cv.originalImage.size.height],
                                                       [cv.widthAnchor constraintEqualToConstant:cv.originalImage.size.width]
                                                       ]];
+            topAnchor+=cv.originalImage.size.height+20;
         } else {
             [NSLayoutConstraint activateConstraints:@[
                                                     //  [cv.leadingAnchor constraintEqualToAnchor:self.scrollView.leadingAnchor],
@@ -87,11 +86,13 @@
                                                       [cv.heightAnchor constraintEqualToConstant:cv.originalImage.size.height],
                                                       [cv.widthAnchor constraintEqualToConstant:cv.originalImage.size.width]
                                                       ]];
+            topAnchor+=cv.originalImage.size.height+20;
         }
         
     previousView = cv;
+        
     }
-    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, topAnchor);
     
     
 }
